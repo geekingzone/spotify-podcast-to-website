@@ -1,6 +1,10 @@
 name: Parse Podcast RSS
 
 on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
   schedule:
     - cron: "0 0 * * *"
 
