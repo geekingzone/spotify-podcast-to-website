@@ -46,8 +46,6 @@ jobs:
         
       - name: Create Temporary File
         run: |
-          pwd
-          ls
           cd website
           echo "Temporary content" > _posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
           git add -A
@@ -55,4 +53,5 @@ jobs:
 
       - name: Push Changes to Another Repository
         run: |
+          cd website
           git push https://${{ secrets.USER_NAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USER_NAME }}/geekingzone.github.io.git
