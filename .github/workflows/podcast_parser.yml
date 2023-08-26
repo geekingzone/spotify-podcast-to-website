@@ -1,9 +1,9 @@
 name: Parse Podcast RSS
 
-on: [push, pull_request]
 on:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:  # Agrega el disparador manual
 
 jobs:
   parse_podcast_rss:
