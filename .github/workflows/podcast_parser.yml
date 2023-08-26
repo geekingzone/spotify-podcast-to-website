@@ -28,4 +28,4 @@ jobs:
 
       - name: Run Podcast Parser
         run: |
-          python parser_script.py
+          python ./parser_script.py
