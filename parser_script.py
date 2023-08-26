@@ -24,7 +24,7 @@ def create_file_content(entry):
     content = f"---\n"
     content += f"layout: post\n"
     content += f"title: {entry.title}\n"
-    content += f"subtitle: Episodio {entry.itunes_episode} de la temporada {entry.itunes_season}\n"
+    content += f"subtitle: Episodio XX de la temporada XX\n"
     content += f"cover-img: {entry.image.url}\n"
     content += f"thumbnail-img: {entry.image.url}\n"
     content += f"share-img: /assets/img/path.jpg\n"
@@ -56,7 +56,7 @@ def main():
         
         # Crear el contenido del archivo
         file_content = create_file_content(entry)
-        
+
         # Crear y escribir en el archivo
         with open(file_name, "w") as file:
             file.write(entry.title)
