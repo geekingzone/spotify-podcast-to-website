@@ -12,8 +12,8 @@ def remove_special_characters(text):
     return cleaned_text
 
 def main():
-    # Obtener el directorio actual
-    current_directory = os.getcwd()
+    # Directorio destino de los episodios
+    posts_directory = "../website/_posts/"
 
     feed = feedparser.parse(podcast_rss_url)
     
@@ -30,7 +30,7 @@ def main():
         clean_file_name_prefix = remove_special_characters(file_name_prefix)
 
         # Crear y escribir en el archivo temporal
-        with open(os.path.join(current_directory, file_name), "w") as file:
+        with open(os.path.join(posts_directory, file_name), "w") as file:
             file.write(entry.title)
             print(f"Archivo '{file_name}' creado.")
     
