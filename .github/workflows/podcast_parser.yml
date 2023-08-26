@@ -1,4 +1,3 @@
-# Github Actions name
 name: Parse Podcast RSS
 
 on:
