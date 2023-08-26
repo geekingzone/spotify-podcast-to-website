@@ -32,6 +32,11 @@ def create_file_content(entry):
     content += f"tags: [episode]\n"
     content += f"---\n\n"
     content += f"{entry.description}"
+    # Manejar el caso en el que entry.description no existe
+    try:
+        content += f"{entry.description}\n"
+    except KeyError:
+        content += f"\n"
     return content
 
 def main():
