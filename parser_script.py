@@ -1,3 +1,4 @@
+import os
 import feedparser
 
 # URL del RSS del podcast
