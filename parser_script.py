@@ -36,6 +36,7 @@ def create_file_content(entry):
         content += f"{entry.description}\n"
     else:
         content += f"\n"
+    return content
 
 def main():
     # Directorio destino de los episodios
