@@ -36,8 +36,8 @@ jobs:
 
       - name: Run Podcast Parser
         run: |
-          pwd
-          python parser_script.py
+          cd podcast_parser
+          python ./parser_script.py
 
       - name: Configure Git
         run: |
