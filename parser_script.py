@@ -60,10 +60,6 @@ def main():
 
         # Crear y escribir en el archivo
         with open(file_name, "w") as file:
-            file.write(entry.title)
-            print(f"Archivo '{file_name}' creado.")
-        # Crear y escribir en el archivo
-        with open(file_name, "w") as file:
             file.write(file_content)
             print(f"Archivo '{file_name}' creado.")
     
