@@ -38,20 +38,11 @@ jobs:
         run: |
           cd podcast_parser
           python ./parser_script.py
-
-      - name: Configure Git
-        run: |
-          pwd
-          cd ~
-          git config --global user.email ${{ secrets.USER_EMAIL }}
-          git config --global user.name ${{ secrets.USER_NAME }}
-          #git config pull.rebase false
-          #git config --unset-all http.https://github.com/.extraheader
           
       - name: Create Temporary File
         run: |
-          echo "Temporary content" > website/add_posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
           cd website
+          echo "Temporary content" > add_posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
           git add -A
           git commit -m "Automatic commit from GitHub Actions"
 
