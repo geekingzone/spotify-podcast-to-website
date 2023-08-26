@@ -12,6 +12,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          path: podcast_parser
+
+      - name: Set remote repository
+        uses: actions/checkout@v2
+        with:
+          repository: geekingzone/geekingzone.github.io.git
+          path: add_posts
+          token: ${{secrets.ACCESS_TOKEN}}
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -33,18 +42,14 @@ jobs:
           cd ~
           git config --global user.email ${{ secrets.USER_EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
-          git config pull.rebase false
-          git config --unset-all http.https://github.com/.extraheader
-          
-      - name: Update Local Repository
-        run: |
-          git pull https://${{ secrets.USER_NAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USER_NAME }}/geekingzone.github.io.git
-          cd geekingzone.github.io.git
+          #git config pull.rebase false
+          #git config --unset-all http.https://github.com/.extraheader
           
       - name: Create Temporary File
         run: |
-          echo "Temporary content" > _posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
-          git add _posts
+          echo "Temporary content" > add_posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
+          cd add_posts
+          git add -A
           git commit -m "Automatic commit from GitHub Actions"
 
       - name: Push Changes to Another Repository
