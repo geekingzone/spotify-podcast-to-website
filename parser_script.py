@@ -31,13 +31,11 @@ def create_file_content(entry):
     content += f"share-img: /assets/img/path.jpg\n"
     content += f"tags: [episode]\n"
     content += f"---\n\n"
-    content += f"{entry.description}"
-    # Manejar el caso en el que entry.description no existe
-    try:
+    # Manejar el caso en el que la descripción no existe
+    if 'summary' in entry:
         content += f"{entry.description}\n"
-    except KeyError:
+    else:
         content += f"\n"
-    return content
 
 def main():
     # Directorio destino de los episodios
