@@ -9,8 +9,9 @@ podcast_rss_url = "https://anchor.fm/s/5879dae4/podcast/rss"
 def remove_special_characters(text):
     # Normalizar el texto y eliminar caracteres especiales
     normalized_text = unicodedata.normalize("NFKD", text)
-    cleaned_text = ''.join([c for c in normalized_text if not unicodedata.combining(c)])
+    cleaned_text = ''.join([c for c in normalized_text if not unicodedata.combining(c) and c != ":"])
     return cleaned_text
+
 
 def format_pub_date(pub_date):
     # Analizar la fecha desde el formato del pubDate del RSS
