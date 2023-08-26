@@ -20,6 +20,18 @@ def format_pub_date(pub_date):
     formatted_date = pub_date_obj.strftime("%Y-%m-%d-")
     return formatted_date
 
+def create_file_content(entry):
+    content = f"---\n"
+    content += f"layout: post\n"
+    content += f"title: {entry.title}\n"
+    content += f"subtitle: Episodio {entry.itunes_episode} de la temporada {entry.itunes_season}\n"
+    content += f"cover-img: {entry.image.url}\n"
+    content += f"thumbnail-img: {entry.image.url}\n"
+    content += f"share-img: /assets/img/path.jpg\n"
+    content += f"tags: [episode]\n"
+    content += f"---\n\n"
+    return content
+
 def main():
     # Directorio destino de los episodios
     posts_directory = "../website/_posts/"
@@ -29,7 +41,7 @@ def main():
     # Aquí puedes procesar la información del feed como desees
     # Por ejemplo, imprimir los títulos de los episodios recientes
     for entry in feed.entries:
-        words = entry.title.split()[:5]
+        words = entry.title.split()[:6]
         file_name_prefix = "-".join(words)
         clean_file_name_prefix = remove_special_characters(file_name_prefix)
 
@@ -42,9 +54,16 @@ def main():
         # Crear el nombre completo del archivo en el directorio destino
         file_name = os.path.join(posts_directory, formatted_date + clean_file_name_prefix + ".md")
         
+        # Crear el contenido del archivo
+        file_content = create_file_content(entry)
+        
         # Crear y escribir en el archivo
         with open(file_name, "w") as file:
             file.write(entry.title)
+            print(f"Archivo '{file_name}' creado.")
+        # Crear y escribir en el archivo
+        with open(file_name, "w") as file:
+            file.write(file_content)
             print(f"Archivo '{file_name}' creado.")
     
 if __name__ == "__main__":
