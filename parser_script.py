@@ -31,7 +31,7 @@ def create_file_content(entry):
     content += f"share-img: /assets/img/path.jpg\n"
     content += f"tags: [episode]\n"
     content += f"---\n\n"
-    content += f"{entry.itunes:summary}"
+    content += f"{entry['itunes:sumarry']}"
     return content
 
 def main():
