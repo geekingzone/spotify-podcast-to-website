@@ -20,17 +20,15 @@ def main():
     # Aquí puedes procesar la información del feed como desees
     # Por ejemplo, imprimir los títulos de los episodios recientes
     for entry in feed.entries:
-        # Obtener las primeras 5 palabras del título
         words = entry.title.split()[:5]
-        
-        # Crear el nombre del archivo sustituyendo espacios por guiones
-        file_name_prefix = "-".join(words) + ".md"
-        
-        # Eliminar caracteres especiales del nombre del archivo
+        file_name_prefix = "-".join(words)
         clean_file_name_prefix = remove_special_characters(file_name_prefix)
-
-        # Crear y escribir en el archivo temporal
-        with open(os.path.join(posts_directory, file_name), "w") as file:
+        
+        # Crear el nombre completo del archivo en el directorio destino
+        file_name = os.path.join(posts_directory, clean_file_name_prefix + ".md")
+        
+        # Crear y escribir en el archivo
+        with open(file_name, "w") as file:
             file.write(entry.title)
             print(f"Archivo '{file_name}' creado.")
     
