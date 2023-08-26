@@ -33,6 +33,11 @@ jobs:
           git config --global user.name ${{ secrets.USER_NAME }}
           git config --unset-all http.https://github.com/.extraheader
           
+      - name: Update Local Repository
+        run: |
+          git pull https://${{ secrets.USER_NAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USER_NAME }}/geekingzone.github.io.git
+          cd geekingzone.github.io.git
+          
       - name: Create Temporary File
         run: |
           echo "Temporary content" > _posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
