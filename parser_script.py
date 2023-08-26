@@ -31,6 +31,7 @@ def create_file_content(entry):
     content += f"share-img: /assets/img/path.jpg\n"
     content += f"tags: [episode]\n"
     content += f"---\n\n"
+    content += f"{entry.description}"
     return content
 
 def main():
