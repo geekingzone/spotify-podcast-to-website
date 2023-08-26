@@ -31,15 +31,15 @@ jobs:
         run: |
           git config --global user.email ${{ secrets.USER_EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
+          git config --unset-all http.https://github.com/.extraheader
           
       - name: Create Temporary File
         run: |
+          git checkout -b temp-branch  
           echo "Temporary content" > _posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
           git add _posts
           git commit -m "Automatic commit from GitHub Actions"
 
       - name: Push Changes to Another Repository
         run: |
-          git checkout -b temp-branch
-          git config --unset-all http.https://github.com/.extraheader
           git push https://${{ secrets.USER_NAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USER_NAME }}/geekingzone.github.io.git temp-branch:main
