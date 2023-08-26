@@ -41,5 +41,5 @@ jobs:
       - name: Push Changes to Another Repository
         run: |
           git checkout -b temp-branch
-          git config --list
+          git config --unset-all http.https://github.com/.extraheader
           git push https://${{ secrets.USER_NAME }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ secrets.USER_NAME }}/geekingzone.github.io.git temp-branch:main
