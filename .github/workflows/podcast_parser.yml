@@ -41,8 +41,10 @@ jobs:
           
       - name: Create Temporary File
         run: |
+          pwd
+          ls
           cd website
-          echo "Temporary content" > add_posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
+          echo "Temporary content" > _posts/2023-08-26-hola-caracola.md  # Crear un archivo temporal
           git add -A
           git commit -m "Automatic commit from GitHub Actions"
 
