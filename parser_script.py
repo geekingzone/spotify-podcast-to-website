@@ -4,6 +4,10 @@ import feedparser
 podcast_rss_url = "https://anchor.fm/s/5879dae4/podcast/rss"
 
 def main():
+    # Obtener el directorio actual
+    current_directory = os.getcwd()
+    print("Directorio actual:", current_directory)
+    
     feed = feedparser.parse(podcast_rss_url)
     
     # Aquí puedes procesar la información del feed como desees
