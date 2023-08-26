@@ -24,11 +24,11 @@ def main():
         words = entry.title.split()[:5]
         
         # Crear el nombre del archivo sustituyendo espacios por guiones
-        file_name = "-".join(words) + ".md"
+        file_name_prefix = "-".join(words) + ".md"
         
         # Eliminar caracteres especiales del nombre del archivo
         clean_file_name_prefix = remove_special_characters(file_name_prefix)
-        
+
         # Crear y escribir en el archivo temporal
         with open(os.path.join(current_directory, file_name), "w") as file:
             file.write(entry.title)
