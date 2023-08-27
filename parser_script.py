@@ -27,7 +27,7 @@ def create_file_content(entry):
     content += f"layout: post\n"
     clean_entry_title = remove_special_characters(entry.title)
     content += f"title: {clean_entry_title}\n"
-    content += f"subtitle: Episodio {entry.itunes_episode} de la temporada {entry.itunes_season}\n"
+    content += f"subtitle: Episodio {entry.episode} de la temporada {entry.season}\n"
     content += f"cover-img: {entry.image.url}\n"
     content += f"thumbnail-img: {entry.image.url}\n"
     content += f"share-img: {entry.image.url}\n"
