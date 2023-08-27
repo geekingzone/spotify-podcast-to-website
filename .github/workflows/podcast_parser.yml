@@ -33,7 +33,6 @@ jobs:
           cd podcast_parser
           python -m pip install --upgrade pip
           pip install feedparser
-          pip install beautifulsoup4
 
       - name: Run Podcast Parser
         run: |
