@@ -29,7 +29,7 @@ def create_file_content(entry):
     content += f"subtitle: Episodio XX de la temporada XX\n"
     content += f"cover-img: {entry.image.url}\n"
     content += f"thumbnail-img: {entry.image.url}\n"
-    content += f"share-img: /assets/img/path.jpg\n"
+    content += f"share-img: {entry.image.url}\n"
     content += f"tags: [episode]\n"
     content += f"---\n\n"
     # Manejar el caso en el que la descripción no existe
