@@ -1,6 +1,8 @@
 import os
 import feedparser
 import unicodedata
+from bs4 import BeautifulSoup
+import re
 from datetime import datetime
 
 # URL del RSS del podcast
@@ -32,11 +34,18 @@ def create_file_content(entry):
     content += f"tags: [episode]\n"
     content += f"---\n\n"
     # Manejar el caso en el que la descripción no existe
-    if 'summary' in entry:
-        content += f"{entry.description}\n"
+    if 'description' in entry:
+        soup = BeautifulSoup(entry.description, 'html.parser')
+        
+        # Buscar y reemplazar URLs en texto plano con enlaces HTML
+        for text_node in soup.find_all(text=True):
+            if re.search(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', text_node):
+                text_node.replace_with(re.sub(r'(http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)',
+                                              r'<a href="\1">\1</a>', text_node))
+        
+        content += str(soup) + '\n'
     else:
         content += f"\n"
-    return content
 
 def main():
     # Directorio destino de los episodios
