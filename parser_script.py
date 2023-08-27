@@ -25,7 +25,8 @@ def format_pub_date(pub_date):
 def create_file_content(entry):
     content = f"---\n"
     content += f"layout: post\n"
-    content += f"title: {entry.title}\n"
+    clean_entry_title = remove_special_characters(entry.title)
+    content += f"title: {clean_entry_title}\n"
     content += f"subtitle: Episodio XX de la temporada XX\n"
     content += f"cover-img: {entry.image.url}\n"
     content += f"thumbnail-img: {entry.image.url}\n"
