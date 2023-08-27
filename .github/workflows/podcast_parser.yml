@@ -48,7 +48,7 @@ jobs:
         run: |
           cd website
           git add -A
-          git commit -m "Automatic commit from GitHub Actions"
+          git diff-index --quiet HEAD || git commit -m "Automatic commit from GitHub Actions"
 
       - name: Push Changes to Another Repository
         run: |
