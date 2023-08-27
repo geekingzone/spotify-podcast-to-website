@@ -47,7 +47,8 @@ def create_file_content(entry):
         content += description_with_links + '\n'
     else:
         content += f"\n"
-    content += f"<iframe src='{entry.link}' height='204px' width='800px' frameborder='0' scrolling='no'></iframe>"
+    new_entrylink = entrylink.replace("/episodes/", "/embed/episodes/")
+    content += f"<iframe src='{new_entrylink}' height='204px' width='800px' frameborder='0' scrolling='no'></iframe>"
     return content
 
 def main():
