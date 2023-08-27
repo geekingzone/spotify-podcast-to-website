@@ -46,6 +46,7 @@ def create_file_content(entry):
         content += str(soup) + '\n'
     else:
         content += f"\n"
+    return content
 
 def main():
     # Directorio destino de los episodios
