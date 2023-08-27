@@ -56,7 +56,7 @@ def main():
         clean_file_name_prefix = remove_special_characters(file_name_prefix)
 
         # Obtener la fecha del pubDate del RSS
-        pub_date = entry.pubDate
+        pub_date = entry.published
         
         # Formatear la fecha
         formatted_date = format_pub_date(pub_date)    
