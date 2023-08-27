@@ -33,7 +33,7 @@ def create_file_content(entry):
     if season and episode_number:
         content += f"subtitle: Episodio {episode_number} de la temporada {season}\n"
     else:
-        content += f"subtitle: Episodio sin información de temporada y número\n"
+        content += f"subtitle: Episodio Bonus\n"
     content += f"cover-img: {entry.image.url}\n"
     content += f"thumbnail-img: {entry.image.url}\n"
     content += f"share-img: {entry.image.url}\n"
