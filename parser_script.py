@@ -27,10 +27,13 @@ def create_file_content(entry):
     content += f"layout: post\n"
     clean_entry_title = remove_special_characters(entry.title)
     content += f"title: {clean_entry_title}\n"
-    # Get the season and episode information
-    season = entry.itunes_season  # Access the itunes:season tag
-    episode_number = entry.itunes_episode  # Access the itunes:episode tag
-    content += f"subtitle: Episodio {episode_number} de la temporada {season}\n"
+    # Get the season and episode information from the XML data
+    season = entry.get("itunes_season", "")
+    episode_number = entry.get("itunes_episode", "")
+    if season and episode_number:
+        content += f"subtitle: Episodio {episode_number} de la temporada {season}\n"
+    else:
+        content += f"subtitle: Episodio sin información de temporada y número\n"
     content += f"cover-img: {entry.image.url}\n"
     content += f"thumbnail-img: {entry.image.url}\n"
     content += f"share-img: {entry.image.url}\n"
