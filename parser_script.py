@@ -2,6 +2,7 @@ import os
 import feedparser
 import unicodedata
 import re
+import html
 from datetime import datetime
 
 # URL del RSS del podcast
@@ -34,9 +35,10 @@ def create_file_content(entry):
     content += f"---\n\n"
     # Manejar el caso en el que la descripción no existe
     if 'description' in entry:
-        # Buscar y reemplazar URLs con enlaces Markdown
+        # Decodificar entidades HTML y luego buscar y reemplazar URLs con enlaces Markdown
+        decoded_description = html.unescape(entry.description)
         description_with_links = re.sub(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
-                                        r'[\g<0>](\g<0>)', entry.description)
+                                        r'[\g<0>](\g<0>)', decoded_description)
         content += description_with_links + '\n'
     else:
         content += f"\n"
