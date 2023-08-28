@@ -2,6 +2,7 @@ import os
 import feedparser
 import unicodedata
 import re
+import html2markdown
 from datetime import datetime
 
 # URL del RSS del podcast
@@ -39,11 +40,13 @@ def create_file_content(entry):
     content += f"share-img: {entry.image.url}\n"
     content += f"tags: [episode]\n"
     content += f"---\n\n"
+    # Convertir el contenido HTML de description a Markdown
+    description_in_markdown = html2markdown.convert(entry.description)
     # Manejar el caso en el que la descripción no existe
     if 'description' in entry:
         # Buscar y reemplazar URLs con enlaces Markdown
         # You can check regex here: https://regexr.com/
-        description_with_links = re.sub(r'(?<![\w\/])https?:\/\/[^\s<>"]+(?![\w\/])', r'[\g<0>](\g<0>)', entry.description)
+        description_with_links = re.sub(r'(?<![\w\/])https?:\/\/[^\s<>"]+(?![\w\/])', r'[\g<0>](\g<0>)', description_in_markdown)
         content += description_with_links + '\n'
     else:
         content += f"\n"
