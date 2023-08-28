@@ -42,7 +42,8 @@ def create_file_content(entry):
     # Manejar el caso en el que la descripción no existe
     if 'description' in entry:
         # Buscar y reemplazar URLs con enlaces Markdown
-        description_with_links = re.sub(r'(?<![\w\/])https?://[^\s<>"]+(?![\w\/])', r'[\g<0>](\g<0>)', entry.description)
+        # You can check regex here: https://regexr.com/
+        description_with_links = re.sub(r'(?<![\w\/])https?:\/\/[^\s<>"]+(?![\w\/])', r'[\g<0>](\g<0>)', entry.description)
         content += description_with_links + '\n'
     else:
         content += f"\n"
