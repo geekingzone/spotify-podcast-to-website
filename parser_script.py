@@ -42,7 +42,7 @@ def create_file_content(entry):
     # Manejar el caso en el que la descripción no existe
     if 'description' in entry:
         # Buscar y reemplazar URLs con enlaces Markdown
-        description_with_links = re.sub(r'(?<![\w\/])http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+(?![\w\/])', r'[\g<0>](\g<0>)', entry.description
+        description_with_links = re.sub(r'(?<![\w\/])http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+(?![\w\/])', r'[\g<0>](\g<0>)', entry.description)
         content += description_with_links + '\n'
     else:
         content += f"\n"
