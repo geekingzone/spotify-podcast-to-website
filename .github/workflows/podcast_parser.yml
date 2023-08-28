@@ -33,6 +33,7 @@ jobs:
           cd podcast_parser
           python -m pip install --upgrade pip
           pip install feedparser
+          pip install html2markdown
 
       - name: Run Podcast Parser
         run: |
