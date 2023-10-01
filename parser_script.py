@@ -32,7 +32,7 @@ def create_file_content(entry):
     season = entry.get("itunes_season", "")
     episode_number = entry.get("itunes_episode", "")
     if season and episode_number:
-        content += f"subtitle: Episodio {episode_number} de la temporada {season}\n"
+        content += f"subtitle: Episodio {episode_number}\n"
     else:
         content += f"subtitle: Episodio Bonus\n"
     content += f"cover-img: {entry.image.url}\n"
