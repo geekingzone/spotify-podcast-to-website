@@ -28,10 +28,9 @@ def create_file_content(entry):
     content += f"layout: post\n"
     clean_entry_title = remove_special_characters(entry.title)
     content += f"title: {clean_entry_title}\n"
-    # Get the season and episode information from the XML data
-    season = entry.get("itunes_season", "")
+    # Get the episode information from the XML data
     episode_number = entry.get("itunes_episode", "")
-    if season and episode_number:
+    if episode_number:
         content += f"subtitle: Episodio {episode_number}\n"
     else:
         content += f"subtitle: Episodio Bonus\n"
